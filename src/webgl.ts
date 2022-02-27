@@ -1,3 +1,5 @@
+import { DropFirst, WebGLUniformType } from './types'
+
 export function createProgram(gl:WebGL2RenderingContext, vertex_shader:WebGLShader, fragment_shader:WebGLShader) {
 	let program = gl.createProgram()
 	if (!program) throw new Error('Unable to create program')
@@ -27,5 +29,13 @@ export function createShader(gl:WebGL2RenderingContext, type:typeof WebGL2Render
 	}
 
 	return shader
+}
+
+export function createUniform<T extends WebGLUniformType>(gl:WebGL2RenderingContext, program:WebGLProgram, type:T, name:string) {
+	let location = gl.getUniformLocation(program, name)
+	return function setUniform(...args:DropFirst<Parameters<typeof gl[`uniform${T}`]>>) {
+		// @ts-ignore
+		return gl[`uniform${type}`](location, ...args)
+	}
 }
 
