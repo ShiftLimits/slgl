@@ -77,3 +77,30 @@ export function createBuffer(gl:WebGL2RenderingContext, data:ArrayBufferView | A
 
 	return buffer
 }
+
+// Framebuffers
+
+const framebuffers:Map<WebGL2RenderingContext, WebGLFramebuffer[]> = new Map()
+function addFramebuffer(gl:WebGL2RenderingContext, framebuffer:WebGLFramebuffer) {
+	let gl_framebuffers = framebuffers.get(gl) || []
+	framebuffers.set(gl, [...gl_framebuffers, framebuffer])
+}
+
+export function releaseAllFramebuffers(gl:WebGL2RenderingContext) {
+	for (let framebuffer of framebuffers.get(gl) || []) gl.deleteFramebuffer(framebuffer)
+	framebuffers.set(gl, [])
+}
+
+export function createFramebuffer(gl:WebGL2RenderingContext) {
+	let framebuffer = gl.createFramebuffer()
+	if (!framebuffer) throw new Error('Unable to create framebuffer')
+
+	addFramebuffer(gl, framebuffer)
+
+	return framebuffer
+}
+
+export function attachTexture(gl:WebGL2RenderingContext, frame_buffer:WebGLFramebuffer, attachment:number, texture:WebGLTexture) {
+	gl.bindFramebuffer(gl.FRAMEBUFFER, frame_buffer)
+	gl.framebufferTexture2D(gl.FRAMEBUFFER, attachment, gl.TEXTURE_2D, texture, 0)
+}
