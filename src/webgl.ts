@@ -39,3 +39,7 @@ export function createUniform<T extends WebGLUniformType>(gl:WebGL2RenderingCont
 	}
 }
 
+export function createAttribute(gl:WebGL2RenderingContext, program:WebGLProgram, name:string) {
+	let location = gl.getAttribLocation(program, name)
+	return location
+}
