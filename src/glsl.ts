@@ -1,0 +1,2 @@
+/** A pass-through template function for GLSL syntax highlighting */
+export const glsl = (strings:TemplateStringsArray, ...args:any[]) => strings.map((string, i) => `${string}${args[i] || ''}`).join('')
