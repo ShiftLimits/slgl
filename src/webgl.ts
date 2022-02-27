@@ -104,3 +104,52 @@ export function attachTexture(gl:WebGL2RenderingContext, frame_buffer:WebGLFrame
 	gl.bindFramebuffer(gl.FRAMEBUFFER, frame_buffer)
 	gl.framebufferTexture2D(gl.FRAMEBUFFER, attachment, gl.TEXTURE_2D, texture, 0)
 }
+
+// Textures
+
+const textures:Map<WebGL2RenderingContext, Set<WebGLTexture>> = new Map()
+function addTexture(gl:WebGL2RenderingContext, texture:WebGLTexture) {
+	let gl_textures = textures.get(gl) || new Set()
+	gl_textures.add(texture)
+
+	textures.set(gl, gl_textures)
+}
+
+export function releaseAllTextures(gl:WebGL2RenderingContext) {
+	for (let texture of textures.get(gl) || new Set()) gl.deleteTexture(texture)
+	textures.set(gl, new Set())
+}
+
+export function destroyTexture(gl:WebGL2RenderingContext, texture:WebGLTexture) {
+	gl.deleteTexture(texture)
+
+	let gl_textures = textures.get(gl)
+	if (gl_textures) gl_textures.delete(texture)
+}
+
+export function createTexture(gl:WebGL2RenderingContext, width:number, height:number, internal_format:number, format:number, type:number, data:ArrayBufferView|null = null) {
+	let texture = gl.createTexture()
+	if (!texture) throw new Error('Unable to create texture')
+
+	gl.bindTexture(gl.TEXTURE_2D, texture)
+
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT)
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT)
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
+
+	gl.texImage2D(gl.TEXTURE_2D, 0, internal_format, width, height, 0, format, type, data)
+	addTexture(gl, texture)
+
+	return texture
+}
+
+export function updateTexture(gl:WebGL2RenderingContext, texture:WebGLTexture, width:number, height:number, internal_format:number, format:number, type:number, data:ArrayBufferView|null = null) {
+	gl.bindTexture(gl.TEXTURE_2D, texture)
+	gl.texImage2D(gl.TEXTURE_2D, 0, internal_format, width, height, 0, format, type, data)
+}
+
+export function bindTexture(gl:WebGL2RenderingContext, unit:number, texture:WebGLTexture) {
+	gl.activeTexture(unit)
+	gl.bindTexture(gl.TEXTURE_2D, texture)
+}
