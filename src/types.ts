@@ -1,3 +1,13 @@
+export interface ShaderProgramOptions {
+	devicePixelRatio?:number
+	context?:WebGLContextAttributes
+}
+
+export interface ResolvedShaderProgramOptions {
+	devicePixelRatio:number
+	context:WebGLContextAttributes
+}
+
 export type WebGLUniformType = '1f'|'1fv'|'1i'|'1iv'|'1ui'|'1uiv'|'2f'|'2fv'|'2i'|'2iv'|'2ui'|'2uiv'|
 															 '3f'|'3fv'|'3i'|'3iv'|'3ui'|'3uiv'|'4f'|'4fv'|'4i'|'4iv'|'4ui'|'4uiv'|
 															 'Matrix2fv'|'Matrix2x3fv'|'Matrix2x4fv'|
@@ -6,3 +16,7 @@ export type WebGLUniformType = '1f'|'1fv'|'1i'|'1iv'|'1ui'|'1uiv'|'2f'|'2fv'|'2i
 
 // Credit ford04: https://stackoverflow.com/a/63029283
 export type DropFirst<T extends unknown[]> = T extends [any, ...infer U] ? U : never
+export type DropFirstTwo<T extends unknown[]> = T extends [any, any, ...infer U] ? U : never
+
+// Credit voodoocreation: https://github.com/voodoocreation/ts-deepmerge/blob/cd27bf7dc38271200b3287f7f5d29f5f394b15f0/src/index.ts#L6
+export type TUnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never
