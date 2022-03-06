@@ -85,5 +85,10 @@ export function createShaderProgram(gl:WebGL2RenderingContext, vertex_source:str
 
 /** Create a fragment-only shader program */
 export function createFragmentShaderProgram(gl:WebGL2RenderingContext, fragment_source:string) {
-	return createShaderProgram(gl, ScreenCoveringTriangleVertexSource, fragment_source)
+	return {
+		...createShaderProgram(gl, ScreenCoveringTriangleVertexSource, fragment_source),
+		draw() {
+			gl.drawArrays(gl.TRIANGLE_FAN, 0, 3)
+		}
+	}
 }
