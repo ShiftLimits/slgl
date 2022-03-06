@@ -20,3 +20,22 @@ export type DropFirstTwo<T extends unknown[]> = T extends [any, any, ...infer U]
 
 // Credit voodoocreation: https://github.com/voodoocreation/ts-deepmerge/blob/cd27bf7dc38271200b3287f7f5d29f5f394b15f0/src/index.ts#L6
 export type TUnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never
+
+export enum LoopEngineState {
+	IDLE,
+	RUNNING,
+	PAUSED,
+	DESTROYED
+}
+
+export enum LoopProgramState {
+	IDLE,
+	INITIALIZED,
+	DESTROYED
+}
+export interface LoopProgram {
+	init?():Promise<void>|void
+	update?(dt:number):void
+	render?(interpolation:number):void
+	destroy?():void
+}
