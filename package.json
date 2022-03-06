@@ -6,6 +6,7 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -19,8 +20,13 @@
   "scripts": {
     "build": "tsup"
   },
+  "gitHooks": {
+    "commit-msg": "node scripts/verifyCommit.js"
+  },
   "devDependencies": {
+    "chalk": "^5.0.0",
     "tsup": "^5.11.13",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "yorkie": "^2.0.0"
   }
 }
