@@ -1,9 +1,9 @@
-export interface ShaderProgramOptions {
+export interface ShaderCanvasOptions {
 	devicePixelRatio?:number
 	context?:WebGLContextAttributes
 }
 
-export interface ResolvedShaderProgramOptions {
+export interface ResolvedShaderCanvasOptions {
 	devicePixelRatio:number
 	context:WebGLContextAttributes
 }
