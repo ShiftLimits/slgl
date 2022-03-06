@@ -81,6 +81,11 @@ export function createBuffer(gl:WebGL2RenderingContext, data:ArrayBufferView | A
 	return buffer
 }
 
+export function drawBuffer(gl:WebGL2RenderingContext, buffer:WebGLBuffer, mode:number, first:number, count:number) {
+	gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
+	gl.drawArrays(mode, first, count)
+}
+
 // Framebuffers
 
 const framebuffers:Map<WebGL2RenderingContext, WebGLFramebuffer[]> = new Map()
