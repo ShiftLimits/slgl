@@ -35,6 +35,8 @@ export function createUniform<T extends WebGLUniformType>(gl:WebGL2RenderingCont
 	const location = gl.getUniformLocation(program, name)
 	return function setUniform(...args:DropFirst<Parameters<typeof gl[`uniform${T}`]>>) {
 		if (!location) return
+
+		gl.useProgram(program)
 		// @ts-ignore
 		return gl[`uniform${type}`](location, ...args)
 	}
