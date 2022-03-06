@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Nothing yet.
 
+## [0.0.2] - 2022-06-03
+
+### Fixed
+- Fix build output by reverting module type change in `package.json`
+
 ## [0.0.1] - 2022-06-03
 
 Initial release!
