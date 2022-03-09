@@ -52,7 +52,7 @@ export class LoopEngine {
 	private state:LoopEngineState = LoopEngineState.IDLE
 	private last_loop_time:number = 0
 	update_speed:number = 1
-	update_time_step:number = 100 // in ms
+	update_time_step:number = 16 // in ms
 
 	async init() {
 		if ([LoopEngineState.IDLE, LoopEngineState.DESTROYED].includes(this.state)) {
