@@ -1,6 +1,6 @@
 {
   "name": "slgl",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Jeff Schofield <jeff@jeffschofield.com>",
   "license": "MIT",
   "main": "./dist/index.js",
