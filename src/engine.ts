@@ -53,6 +53,7 @@ export class LoopEngine {
 	private last_loop_time:number = 0
 	update_speed:number = 1
 	update_time_step:number = 16 // in ms
+	max_updates:number = 200
 
 	async init() {
 		if ([LoopEngineState.IDLE, LoopEngineState.DESTROYED].includes(this.state)) {
@@ -84,6 +85,9 @@ export class LoopEngine {
 
 		if (this.state == LoopEngineState.RUNNING) {
 			this.accumulated_frame_time += time - this.last_loop_time
+
+			let n_updates = Math.floor(this.accumulated_frame_time / this.update_time_step)
+			if (n_updates > this.max_updates) this.accumulated_frame_time = this.update_time_step
 
 			while (this.accumulated_frame_time >= this.update_time_step) {
 				this.update(this.update_time_step)
