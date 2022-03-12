@@ -7,7 +7,7 @@ import { createShader, createProgram, createUniform, createAttribute } from './w
 // Canvas utilities
 
 export function createShaderCanvas(canvas:HTMLCanvasElement, vertex_source:string, fragment_source:string, options:ShaderCanvasOptions = {}) {
-	const { devicePixelRatio, context } = deepMerge(DefaultShaderCanvasOptions, options)
+	const { devicePixelRatio, context } = deepMerge(DefaultShaderCanvasOptions(), options)
 
 	const gl = canvas.getContext("webgl2", context)
 	if (!gl) throw new Error('Unable to get WebGL context.')
