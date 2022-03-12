@@ -1,7 +1,8 @@
 {
   "name": "slgl",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Jeff Schofield <jeff@jeffschofield.com>",
+  "keywords": ["webgl", "glsl", "shaders"],
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

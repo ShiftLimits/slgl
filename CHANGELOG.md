@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Nothing yet.
 
+## [0.0.4] - 2022-12-03
+
+### Changed
+- Get default shader canvas options from a function so we can support server side rendering where `window` is undefined
+
 ## [0.0.3] - 2022-08-03
 
 ### Added
