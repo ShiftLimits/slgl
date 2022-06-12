@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Nothing yet.
 
+## [0.0.5] - 2022-06-12
+
+### Fixed
+- Fix child objects not merging in `deepMerge`, causing context not to get passed to WebGL2 in a shader canvas
+
 ## [0.0.4] - 2022-03-12
 
 ### Changed
