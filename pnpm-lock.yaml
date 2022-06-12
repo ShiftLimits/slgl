@@ -1,18 +1,18 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@types/node': ^16.0.0
-  chalk: ^5.0.0
+  '@types/node': ^16.11.39
+  chalk: ^5.0.1
   esno: ^0.16.3
-  tsup: ^5.11.13
-  typescript: ^4.5.5
+  tsup: ^6.1.2
+  typescript: ^4.7.3
   yorkie: ^2.0.0
 
 devDependencies:
   '@types/node': 16.11.39
   chalk: 5.0.1
   esno: 0.16.3
-  tsup: 5.12.9_typescript@4.7.3
+  tsup: 6.1.2_typescript@4.7.3
   typescript: 4.7.3
   yorkie: 2.0.0
 
@@ -1111,8 +1111,9 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /tsup/5.12.9_typescript@4.7.3:
-    resolution: {integrity: sha512-dUpuouWZYe40lLufo64qEhDpIDsWhRbr2expv5dHEMjwqeKJS2aXA/FPqs1dxO4T6mBojo7rvo3jP9NNzaKyDg==}
+  /tsup/6.1.2_typescript@4.7.3:
+    resolution: {integrity: sha512-Hw4hKDHaAQkm2eVavlArEOrAPA93bziRDamdfwaNs0vXQdUUFfItvUWY0L/F6oQQMVh6GvjQq1+HpDXw8UKtPA==}
+    engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
       '@swc/core': ^1

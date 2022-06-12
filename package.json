@@ -29,10 +29,10 @@
   },
   "devDependencies": {
     "@types/node": "^16.11.39",
-    "chalk": "^5.0.0",
+    "chalk": "^5.0.1",
     "esno": "^0.16.3",
-    "tsup": "^5.11.13",
-    "typescript": "^4.5.5",
+    "tsup": "^6.1.2",
+    "typescript": "^4.7.3",
     "yorkie": "^2.0.0"
   }
 }
